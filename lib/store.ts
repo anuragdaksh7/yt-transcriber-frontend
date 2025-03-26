@@ -1,8 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
+import currentDialogSlice from './features/currentDialog/currentDialogSlice'
 
 export const makeStore = () => {
   return configureStore({
-    reducer: {}
+    reducer: {
+      currentDialog: currentDialogSlice
+    }
   })
 }
 
