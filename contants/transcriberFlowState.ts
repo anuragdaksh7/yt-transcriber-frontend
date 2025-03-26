@@ -1,9 +1,11 @@
 import TranscriptionOne from "@/components/TranscriptionFlow/TranscriptionOne/TranscriptionOne"
 import TranscriptionOAuth from "@/components/TranscriptionFlow/TranscriptionOAuth/TranscriptionOAuth"
+import TranscriptionResult from "@/components/TranscriptionFlow/TranscriptionResult/TranscriptionResult"
 
-export const transcriberFlowStateObject = {
+export const transcriberFlowStateObject: TranscriberFlowStateObject = {
   "LINK_SELECTION": TranscriptionOne,
-  "OAUTH": TranscriptionOAuth
+  "OAUTH": TranscriptionOAuth,
+  "RESULT": TranscriptionResult
 }
 
 export const transcriberFlowState: {

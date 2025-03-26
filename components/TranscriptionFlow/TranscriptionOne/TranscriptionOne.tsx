@@ -1,14 +1,17 @@
 import Image from "next/image"
-import styles from "./TranscriptionOne.module.scss"
-import GradientButton from "@/ui/Buttons/GradientButton/GradientButton"
-import SimpleInput from "@/ui/Inputs/SimpleInput/SimpleInput"
-import ytSoundImage from "@/images/yt-sound-image.png"
+
 import { useAppDispatch } from "@/lib/hooks"
 import { setCurrentPage } from "@/lib/features/currentDialog/currentDialogSlice"
+
+import SimpleInput from "@/ui/Inputs/SimpleInput/SimpleInput"
+import GradientButton from "@/ui/Buttons/GradientButton/GradientButton"
+
 import { transcriberFlowState } from "@/contants/transcriberFlowState"
 
-const TranscriptionOne = (
-) => {
+import ytSoundImage from "@/images/yt-sound-image.png"
+import styles from "./TranscriptionOne.module.scss"
+
+const TranscriptionOne = () => {
   const dispatch = useAppDispatch()
 
   const onTranscribeCall = () => {

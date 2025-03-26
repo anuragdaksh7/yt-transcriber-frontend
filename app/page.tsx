@@ -7,7 +7,9 @@ export default function Home() {
   const currentPage = useAppSelector((state) => state.currentDialog.currentPage);
   return (
     <div className={styles.main_container}>
-      {transcriberFlowStateObject[currentPage]()}
+      {
+        transcriberFlowStateObject[currentPage]({})
+      }
     </div>
   )
 }
