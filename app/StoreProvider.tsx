@@ -2,7 +2,6 @@
 import { useRef } from 'react'
 import { Provider } from 'react-redux'
 import { makeStore, AppStore } from '@/lib/store'
-// import { initializeCount } from "@/lib/features/story/storySlice"
 
 export default function StoreProvider({
   children

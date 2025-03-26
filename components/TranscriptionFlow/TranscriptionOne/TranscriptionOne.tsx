@@ -3,12 +3,18 @@ import styles from "./TranscriptionOne.module.scss"
 import GradientButton from "@/ui/Buttons/GradientButton/GradientButton"
 import SimpleInput from "@/ui/Inputs/SimpleInput/SimpleInput"
 import ytSoundImage from "@/images/yt-sound-image.png"
-
-// type Props = {}
+import { useAppDispatch } from "@/lib/hooks"
+import { setCurrentPage } from "@/lib/features/currentDialog/currentDialogSlice"
+import { transcriberFlowState } from "@/contants/transcriberFlowState"
 
 const TranscriptionOne = (
-  // props: Props
 ) => {
+  const dispatch = useAppDispatch()
+
+  const onTranscribeCall = () => {
+    console.log("alksdfkaj")
+    dispatch(setCurrentPage(transcriberFlowState.OAUTH))
+  }
   return (
     <div className={styles.main_container}>
       <Image src={ytSoundImage} alt="Yt-Sound" priority={true} quality={100} width={138} />
@@ -17,7 +23,7 @@ const TranscriptionOne = (
         <p>Generate a transcript using our cutting-edge, AI transcription tech.</p>
       </div>
       <SimpleInput type="text" placeholder="youtu.be/xxxx" />
-      <GradientButton text="Transcribe" />
+      <GradientButton onClick={onTranscribeCall} text="Transcribe" />
     </div>
   )
 }

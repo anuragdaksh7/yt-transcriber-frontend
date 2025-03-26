@@ -1,7 +1,7 @@
 import styles from "./GradientButton.module.scss"
 
 type Props = {
-  onClick?: () => void,
+  onClick: () => void,
   text?: string
 }
 
