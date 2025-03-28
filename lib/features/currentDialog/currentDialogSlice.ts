@@ -31,7 +31,7 @@ export const currentDialogSlice = createSlice({
 
 export const { setCurrentPage, setYoutubeLink, resetAll } = currentDialogSlice.actions
 
-export const selectCurrentDialogPage = (state: RootState) => state.currentDialog.currentPage
-export const selectYoutubeLink = (state: RootState) => state.currentDialog.youtubeLink
+export const selectCurrentDialogPage = (state: RootState) => state.current_dialog_slice.currentPage
+export const selectYoutubeLink = (state: RootState) => state.current_dialog_slice.youtubeLink
 
 export default currentDialogSlice.reducer
