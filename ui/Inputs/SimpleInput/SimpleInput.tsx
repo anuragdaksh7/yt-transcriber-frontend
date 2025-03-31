@@ -1,13 +1,16 @@
+import { ChangeEvent } from "react"
 import styles from "./SimpleInput.module.scss"
 
 type Props = {
   type: "text" | "number",
-  placeholder?: string
+  placeholder?: string,
+  value: string | number,
+  onChange?: (e: ChangeEvent<HTMLInputElement>) => void,
 }
 
 const SimpleInput = (props: Props) => {
   return (
-    <input type={props.type} placeholder={props?.placeholder} className={styles.simple_input} />
+    <input onChange={props.onChange} type={props.type} value={props.value} placeholder={props?.placeholder} className={styles.simple_input} />
   )
 }
 

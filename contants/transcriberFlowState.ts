@@ -2,11 +2,11 @@ import TranscriptionOne from "@/components/TranscriptionFlow/TranscriptionOne/Tr
 import TranscriptionOAuth from "@/components/TranscriptionFlow/TranscriptionOAuth/TranscriptionOAuth"
 import TranscriptionResult from "@/components/TranscriptionFlow/TranscriptionResult/TranscriptionResult"
 
-export const transcriberFlowStateObject: TranscriberFlowStateObject = {
-  "LINK_SELECTION": TranscriptionOne,
-  "OAUTH": TranscriptionOAuth,
-  "RESULT": TranscriptionResult
-}
+// export const transcriberFlowStateObject: TranscriberFlowStateObject = {
+//   "LINK_SELECTION": TranscriptionOne,
+//   "OAUTH": TranscriptionOAuth,
+//   "RESULT": TranscriptionResult
+// }
 
 export const transcriberFlowState: {
   [key in TranscriberFlowState]: TranscriberFlowState
@@ -18,6 +18,6 @@ export const transcriberFlowState: {
 
 export type TranscriberFlowState = "LINK_SELECTION" | "OAUTH" | "RESULT"
 
-export type TranscriberFlowStateObject = {
-  [key in TranscriberFlowState]: React.FC
-}
+// export type TranscriberFlowStateObject = {
+//   [key in TranscriberFlowState]: React.FC
+// }

@@ -6,11 +6,19 @@ import GoogleIcon from "@/images/google-icon.svg"
 import { useAppDispatch } from "@/lib/hooks"
 import { setCurrentPage } from "@/lib/features/currentDialog/currentDialogSlice"
 import { transcriberFlowState } from "@/contants/transcriberFlowState"
+import { axios_instance } from "@/utils/axios_instance"
 
 const TranscriptionOAuth = () => {
   const dispatch = useAppDispatch();
 
+  const getRedir = async () => {
+    const response = await axios_instance.get("/oauth/google/redirect-uri")
+    console.log(response.data)
+    window.open(response.data.data, "_blank")
+  }
+
   const onAuth = () => {
+    getRedir()
     dispatch(setCurrentPage(transcriberFlowState.RESULT))
   }
   return (

@@ -1,7 +1,7 @@
 import Image from "next/image"
 
-import { useAppDispatch } from "@/lib/hooks"
-import { setCurrentPage } from "@/lib/features/currentDialog/currentDialogSlice"
+import { useAppDispatch, useAppSelector } from "@/lib/hooks"
+import { setCurrentPage, setYoutubeLink as actionSetYoutubeLink, selectYoutubeLink } from "@/lib/features/currentDialog/currentDialogSlice"
 
 import SimpleInput from "@/ui/Inputs/SimpleInput/SimpleInput"
 import GradientButton from "@/ui/Buttons/GradientButton/GradientButton"
@@ -10,12 +10,17 @@ import { transcriberFlowState } from "@/contants/transcriberFlowState"
 
 import ytSoundImage from "@/images/yt-sound-image.png"
 import styles from "./TranscriptionOne.module.scss"
+import { ChangeEvent, Dispatch, SetStateAction, useEffect, useState } from "react"
 
-const TranscriptionOne = () => {
+const TranscriptionOne = ({ youtubeLink, setYoutubeLink }: { youtubeLink: string, setYoutubeLink: Dispatch<SetStateAction<string>> }) => {
   const dispatch = useAppDispatch()
 
+  const handleYoutubeLinkChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setYoutubeLink(e.target.value)
+  }
+
   const onTranscribeCall = () => {
-    console.log("alksdfkaj")
+    dispatch(actionSetYoutubeLink(youtubeLink))
     dispatch(setCurrentPage(transcriberFlowState.OAUTH))
   }
   return (
@@ -25,7 +30,7 @@ const TranscriptionOne = () => {
         <h1>Transcribe your recording</h1>
         <p>Generate a transcript using our cutting-edge, AI transcription tech.</p>
       </div>
-      <SimpleInput type="text" placeholder="youtu.be/xxxx" />
+      <SimpleInput value={youtubeLink} onChange={handleYoutubeLinkChange} type="text" placeholder="youtu.be/xxxx" />
       <GradientButton onClick={onTranscribeCall} text="Transcribe" />
     </div>
   )
