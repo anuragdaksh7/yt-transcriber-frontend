@@ -1,0 +1,15 @@
+.main_container {
+  display: flex;
+  padding: 1.25rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  align-self: stretch;
+
+  .video {
+    height: 8.87769rem;
+    align-self: stretch;
+    aspect-ratio: 544.00/302.04;
+  }
+}
