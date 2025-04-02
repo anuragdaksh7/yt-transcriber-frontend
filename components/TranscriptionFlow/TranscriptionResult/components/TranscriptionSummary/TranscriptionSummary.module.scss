@@ -1,0 +1,12 @@
+.main_container {
+  display: flex;
+  max-height: 12rem;
+  padding: var(--SIZE-20, 1.25rem);
+  flex-direction: column;
+  align-items: center;
+  gap: var(--SIZE-20, 1.25rem);
+  align-self: stretch;
+  border-radius: 1rem;
+  border: 1px solid var(--COLOR-BORDER-PRIMARY, #F0F3FA);
+  background: var(--COLOR-MUTLTICOLOR-24E1C8-0, #FFF);
+}
