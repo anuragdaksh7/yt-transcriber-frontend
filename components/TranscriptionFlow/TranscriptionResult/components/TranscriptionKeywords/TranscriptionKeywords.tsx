@@ -2,9 +2,7 @@ import Sparkle from "@/images/sparkle.svg"
 import Image from "next/image"
 import styles from "./TranscriptionKeywords.module.scss"
 
-type Props = {}
-
-const TranscriptionKeywords = (props: Props) => {
+const TranscriptionKeywords = () => {
   return (
     <div className={styles.main_container}>
       <div className={styles.header}>

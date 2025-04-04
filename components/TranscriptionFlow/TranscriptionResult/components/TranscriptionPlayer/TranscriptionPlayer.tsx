@@ -1,8 +1,6 @@
 import styles from "./TranscriptionPlayer.module.scss";
 
-type Props = {}
-
-const TranscriptionPlayer = (props: Props) => {
+const TranscriptionPlayer = () => {
   return (
     <div className={styles.main_container}>
       <div className={styles.video}></div>

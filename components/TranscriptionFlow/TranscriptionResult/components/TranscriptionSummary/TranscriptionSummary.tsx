@@ -2,9 +2,7 @@ import Sparkle from "@/images/sparkle.svg"
 import styles from "./TranscriptionSummary.module.scss"
 import Image from "next/image"
 
-type Props = {}
-
-const TranscriptionSummary = (props: Props) => {
+const TranscriptionSummary = () => {
   return (
     <div className={styles.main_container}>
       <div className={styles.header}>

@@ -4,8 +4,6 @@ import Export from "@/images/export.svg"
 import Profile2 from "@/images/Group.svg"
 import styles from "./TranscriptionField.module.scss"
 
-type Props = {}
-
 const TranscriptionCell = ({ speaker, text, timestamp }: { speaker: string, text: string, timestamp: string }) => {
   return (
     <div className={styles.transcript_cell}>
@@ -30,7 +28,7 @@ const TranscriptionCell = ({ speaker, text, timestamp }: { speaker: string, text
   )
 }
 
-const TranscriptionField = (props: Props) => {
+const TranscriptionField = () => {
   const transcript = [
     {
       "timestamp": "00:07",

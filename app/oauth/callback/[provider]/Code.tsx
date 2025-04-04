@@ -16,7 +16,8 @@ const Code = (props: Props) => {
   const code = searchParams.get("code") || "";
   const dispatch = useAppDispatch()
 
-  const verifyOAuthToken = async (INTEGERATION_TYPE: string, payload: { code: string }, callback: Function) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const verifyOAuthToken = async (INTEGERATION_TYPE: string, payload: { code: string }, callback: any) => {
     try {
       const response = await axios_instance.post(
         `/oauth/${INTEGERATION_TYPE}/verify`,
@@ -46,6 +47,7 @@ const Code = (props: Props) => {
   useEffect(() => {
     verifyOAuthToken(props.provider, {
       code: code
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     }, (res: any, err: any) => {
       if (err) {
         errorToast(err?.message)
@@ -53,6 +55,7 @@ const Code = (props: Props) => {
       }
       dispatch(setUser(res?.data))
     })
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   return (
     <div>{props.provider} {code}</div>

@@ -2,6 +2,7 @@ import { RootState } from "@/lib/store";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 
 export interface UserState {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   user: any,
   access_token: string
 }
@@ -38,6 +39,7 @@ export const userSlice = createSlice({
       state.access_token = action.payload.access_token;
     },
     removeUser: (state) => {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       state = initialState
     },
     updateUserOnly: (state, action) => {
