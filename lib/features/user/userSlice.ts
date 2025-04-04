@@ -1,4 +1,5 @@
 import { RootState } from "@/lib/store";
+
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 
 export interface UserState {

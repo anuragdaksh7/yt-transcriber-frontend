@@ -3,6 +3,7 @@ import TranscriptionKeywords from "./components/TranscriptionKeywords/Transcript
 import TranscriptionPlayer from "./components/TranscriptionPlayer/TranscriptionPlayer"
 import TranscriptionResultNavbar from "./components/TranscriptionResultNavbar/TranscriptionResultNavbar"
 import TranscriptionSummary from "./components/TranscriptionSummary/TranscriptionSummary"
+
 import styles from "./TranscriptionResult.module.scss"
 
 const TranscriptionResult = () => {

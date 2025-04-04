@@ -1,4 +1,5 @@
 import { combineSlices, configureStore } from '@reduxjs/toolkit'
+
 import { currentDialogSlice } from './features/currentDialog/currentDialogSlice'
 import { userSlice } from './features/user/userSlice'
 

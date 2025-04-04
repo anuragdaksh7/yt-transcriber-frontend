@@ -1,4 +1,5 @@
 import { ChangeEvent } from "react"
+
 import styles from "./SimpleInput.module.scss"
 
 type Props = {
