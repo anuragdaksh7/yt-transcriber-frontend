@@ -1,7 +1,7 @@
-import Sparkle from "@/images/sparkle.svg";
 import Image from "next/image";
-import styles from "./TranscriptionSummary.module.scss";
+import Sparkle from "@/images/sparkle.svg";
 import Highlight from "./components/Highlight";
+import styles from "./TranscriptionSummary.module.scss";
 
 type Props = {};
 
