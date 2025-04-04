@@ -1,7 +1,7 @@
 import Sparkle from "@/images/sparkle.svg";
 import Image from "next/image";
 import styles from "./TranscriptionSummary.module.scss";
-import Highlight from "./components/Highlight"; // Ensure Highlight is imported correctly
+import Highlight from "./components/Highlight";
 
 type Props = {};
 
@@ -9,55 +9,69 @@ type Keywords = {
   [key: string]: string;
 };
 
-const TranscriptionSummary = (props: Props) => {
-  const data = {
-    text: "This video explores how to build a profitable SaaS product using API arbitrage. The key is to leverage existing APIs like building blocks, similar to a <highlight keyword='Lego Philosophy'>Lego Philosophy</highlight>, to create unique solutions. Instead of reinventing the wheel, focus on <highlight keyword='API Arbitrage'>API Arbitrage</highlight> by recognizing gaps between API capabilities and customer needs. Price your product based on <highlight keyword='Asymmetrical Pricing'>Asymmetrical Pricing</highlight>, charging for outcomes rather than API calls. Be mindful of <highlight keyword='API Traps'>API Traps</highlight> such as cost and vendor lock-in. To stand out, <highlight keyword='Own the Glue'>Own the Glue</highlight> by creating proprietary workflows around these APIs. Follow the <highlight keyword='New SaaS Playbook'>New SaaS Playbook</highlight> by solving simple problems with existing APIs and scaling efficiently.",
-    keywords: {
-      "Lego Philosophy": "Treat APIs as building blocks for your SaaS product.",
-      "API Arbitrage": "Recognize gaps between API capabilities and customer needs.",
-      "Asymmetrical Pricing": "Charge customers based on outcomes, not API calls.",
-      "API Traps": "Be mindful of cost and vendor lock-in.",
-      "Own the Glue": "Create proprietary workflows around APIs to stand out.",
-      "New SaaS Playbook": "Solve simple problems with existing APIs and scale efficiently.",
-    },
-  };
+const parseText = (text: string, keywords: { [key: string]: { surrounding_text: string; definition: string } }) => {
+  const parts: (string | JSX.Element)[] = [];
+  let lastIndex = 0;
 
-  const parseText = (text: string, keywords: Keywords) => {
-    const regex = /<highlight keyword='(.*?)'>(.*?)<\/highlight>/g;
-    const parts: (string | JSX.Element)[] = [];
-    let lastIndex = 0;
+  Object.entries(keywords).forEach(([keyword, { surrounding_text, definition }]) => {
+    const regex = new RegExp(surrounding_text, "g");
     let match;
 
     while ((match = regex.exec(text)) !== null) {
-      const [fullMatch, keyword, displayText] = match;
+      const [fullMatch] = match;
 
-      // Add the text before the match
       if (match.index > lastIndex) {
         parts.push(text.slice(lastIndex, match.index));
       }
 
-      // Add the Highlight component for the matched keyword
-      if (keywords[keyword]) {
-        parts.push(
-          <Highlight
-            key={`${keyword}-${match.index}`}
-            keyword={keyword}
-            description={keywords[keyword]}
-          >
-            {displayText}
-          </Highlight>
-        );
-      }
+      parts.push(
+        <Highlight key={`${keyword}-${match.index}`} keyword={keyword} description={definition}>
+          {fullMatch}
+        </Highlight>
+      );
 
       lastIndex = regex.lastIndex;
     }
+  });
 
-    // Add the remaining text after the last match
-    if (lastIndex < text.length) {
-      parts.push(text.slice(lastIndex));
-    }
+  if (lastIndex < text.length) {
+    parts.push(text.slice(lastIndex));
+  }
 
-    return parts;
+  return parts;
+};
+const TranscriptionSummary = (props: Props) => {
+  const data = {
+    summary: {
+      text: "This video shares three disturbing mountain incidents, focusing on two Austrian climbers who died with unknown causes after missing (possibly rockfall or error). It then transitions to a story about Mitsutaka, a man who miraculously survived extreme hypothermia (hibernation like state) after falling and being stranded, requiring a search and rescue. The video concludes with the tragic story of the Krippenstein disaster, where a group of schoolchildren and teachers froze to death due to a teacher's overconfidence and poor weather conditions after multiple warnings ignored.",
+      keywords: {
+        "mountain incidents": {
+          surrounding_text: "disturbing mountain incidents",
+          definition: "Overview of disturbing incidents in mountain settings",
+        },
+        "Julian Alps climbers": {
+          surrounding_text: "two Austrian climbers",
+          definition: "Experienced climbers who perished in the Julian Alps.",
+        },
+        "Mitsutaka": {
+          surrounding_text: "Mitsutaka",
+          definition: "Man who survived extreme hypothermia for 24 days.",
+        },
+        "survived hypothermia": {
+          surrounding_text: "miraculously survived extreme hypothermia",
+          definition: "Medical anomaly where a person survives extreme hypothermia, possibly through hibernation.",
+        },
+        "Krippenstein disaster": {
+          surrounding_text: "Krippenstein disaster",
+          definition: "Tragic event where schoolchildren and teachers died on a mountain hike due to weather and poor decisions.",
+        },
+        "froze to death": {
+          surrounding_text: "froze to death",
+          definition: "The tragic death of the students",
+        },
+      },
+      final_thought: "Next big thing is combining Survival stories with disastrous hikes.",
+    },
   };
 
   return (
@@ -69,7 +83,7 @@ const TranscriptionSummary = (props: Props) => {
           <p>AI</p>
         </div>
       </div>
-      <div>{parseText(data.text, data.keywords)}</div>
+      <div>{parseText(data.summary.text, data.summary.keywords)}</div>
     </div>
   );
 };
