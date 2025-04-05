@@ -7,8 +7,8 @@
   flex: 1 0 0;
   align-self: stretch;
   border-radius: 1rem;
-  border: 1px solid var(--COLOR-BORDER-PRIMARY, #F0F3FA);
-  background: var(--COLOR-MUTLTICOLOR-24E1C8-0, #FFF);
+  border: 1px solid var(--COLOR-BORDER-PRIMARY, #f0f3fa);
+  background: var(--COLOR-MUTLTICOLOR-24E1C8-0, #fff);
   line-height: 150%;
 
   .header {
@@ -21,7 +21,7 @@
       color: var(--COLOR-TEXT-PRIMARY, #394759);
       leading-trim: both;
       text-edge: cap;
-      font-feature-settings: 'liga' off, 'clig' off;
+      font-feature-settings: "liga" off, "clig" off;
       font-size: 1rem;
       font-style: normal;
       font-weight: 400;
@@ -35,13 +35,21 @@
       align-items: center;
       gap: 0.625rem;
       border-radius: 1250000000rem;
-      background: linear-gradient(135deg, rgba(36, 225, 200, 0.08) 0.26%, rgba(100, 88, 228, 0.08) 99.74%);
-      
+      background: linear-gradient(
+        135deg,
+        rgba(36, 225, 200, 0.08) 0.26%,
+        rgba(100, 88, 228, 0.08) 99.74%
+      );
+
       p {
-        background: var(--gradient-1, linear-gradient(135deg, #24E1C8 0.26%, #6458E4 99.74%));
+        background: var(
+          --gradient-1,
+          linear-gradient(135deg, #24e1c8 0.26%, #6458e4 99.74%)
+        );
         background-clip: text;
         -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;text-align: center;
+        -webkit-text-fill-color: transparent;
+        text-align: center;
         leading-trim: both;
         text-edge: cap;
         font-size: 0.875rem;
@@ -50,5 +58,14 @@
         line-height: normal;
       }
     }
+  }
+
+  .text {
+    color: var(--COLOR-TEXT-SECONDARY, #567191);
+    text-align: justify;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
   }
 }
