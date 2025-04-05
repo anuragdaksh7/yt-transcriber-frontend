@@ -9,15 +9,16 @@ const TranscriptionPlayer = () => {
 
   const opts: YouTubeProps['opts'] = {
     height: '280',
-    width: '450',
+    width: '100%',
     playerVars: {
-      // https://developers.google.com/youtube/player_parameters
       autoplay: 1,
     },
   };
   return (
     <div className={styles.main_container}>
-      <div className={styles.video}><YouTube videoId="2g811Eo7K8U" opts={opts} onReady={onPlayerReady} className={styles.player}/></div>
+      <div className={styles.video}>
+        <YouTube videoId="2g811Eo7K8U" opts={opts} onReady={onPlayerReady} className={styles.player}/>
+      </div>
     </div>
   )
 }
