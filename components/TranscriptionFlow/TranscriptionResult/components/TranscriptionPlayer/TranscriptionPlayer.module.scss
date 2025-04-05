@@ -6,10 +6,22 @@
   align-items: center;
   gap: 1.5rem;
   align-self: stretch;
-
+  border-radius: 1rem;
+  background: #FFF;
+  height: 20rem;
+  width: 100%;
+  
   .video {
-    height: 8.87769rem;
+    // height: 8.87769rem;
     align-self: stretch;
-    aspect-ratio: 544.00/302.04;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    border-radius: 1rem;
+
+    .player{
+      width: 100%;
+    }
   }
 }

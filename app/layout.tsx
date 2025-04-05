@@ -1,6 +1,6 @@
 // "use client"
 import type { Metadata } from "next";
-import { Poppins } from "next/font/google";
+// import { Poppins } from "next/font/google";
 
 
 import StoreProvider from "./StoreProvider";
@@ -10,11 +10,11 @@ import { ToastContainer } from "react-toastify";
 
 import "./globals.css";
 
-const poppins = Poppins({
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
-  style: ["normal", "italic"],
-  subsets: ["latin", "latin-ext"],
-});
+// const poppins = Poppins({
+//   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+//   style: ["normal", "italic"],
+//   subsets: ["latin", "latin-ext"],
+// });
 
 export const metadata: Metadata = {
   title: "YT Transcriber",
@@ -28,8 +28,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${poppins.className}`}>
-      {/* <body> */}
+      {/* <body className={`${poppins.className}`}> */}
+      <body>
         <ToastContainer />
         <StoreProvider>
           {children}
