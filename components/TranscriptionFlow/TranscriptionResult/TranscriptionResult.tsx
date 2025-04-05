@@ -31,11 +31,7 @@ const TranscriptionResult = () => {
   }, [])
   return (
     <div className={styles.main_container}>
-      <TranscriptionResultNavbar
-        name="Anurag Daksh"
-        title="How to build $3000 saas and make it profitable?"
-        views="140"
-      />
+      <TranscriptionResultNavbar />
       <div className={styles.content}>
         <div className={styles.col1}>
           <TranscriptionPlayer />
