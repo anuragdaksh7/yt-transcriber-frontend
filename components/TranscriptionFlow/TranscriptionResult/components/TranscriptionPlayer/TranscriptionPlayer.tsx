@@ -1,7 +1,13 @@
+import { useAppSelector } from "@/lib/hooks";
 import styles from "./TranscriptionPlayer.module.scss";
 import YouTube, { YouTubeProps } from 'react-youtube';
+import { selectYoutubeLink } from "@/lib/features/currentDialog/currentDialogSlice";
+import { extractYouTubeVideoId } from "@/utils/parser/youtubeLinkParser";
 
 const TranscriptionPlayer = () => {
+  const youtubeLink = useAppSelector(selectYoutubeLink);
+  const videoId = extractYouTubeVideoId(youtubeLink);
+
   const onPlayerReady: YouTubeProps['onReady'] = (event) => {
     // access to player in all event handlers via event.target
     event.target.pauseVideo();
@@ -17,7 +23,7 @@ const TranscriptionPlayer = () => {
   return (
     <div className={styles.main_container}>
       <div className={styles.video}>
-        <YouTube videoId="2g811Eo7K8U" opts={opts} onReady={onPlayerReady} className={styles.player}/>
+        <YouTube videoId={videoId || ""} opts={opts} onReady={onPlayerReady} className={styles.player}/>
       </div>
     </div>
   )

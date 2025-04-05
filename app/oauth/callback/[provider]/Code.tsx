@@ -57,6 +57,7 @@ const Code = (props: Props) => {
         return;
       }
       dispatch(setUser(res?.data))
+      window.location.href = "/"
     })
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])

@@ -2,9 +2,10 @@ import { combineSlices, configureStore } from '@reduxjs/toolkit'
 
 import { currentDialogSlice } from './features/currentDialog/currentDialogSlice'
 import { userSlice } from './features/user/userSlice'
+import { summarySlice } from './features/summary/summarySlice'
 
 export const makeStore = () => {
-  const rootReducer = combineSlices(currentDialogSlice, userSlice)
+  const rootReducer = combineSlices(currentDialogSlice, userSlice, summarySlice)
   return configureStore({
     reducer: rootReducer
   })

@@ -1,20 +1,12 @@
 import Sparkle from "@/images/sparkle.svg";
 import Image from "next/image";
 import styles from "./TranscriptionKeywords.module.scss";
+import { useAppSelector } from "@/lib/hooks";
+import { selectSummary } from "@/lib/features/summary/summarySlice";
 
 const TranscriptionKeywords = () => {
-  const hashtags = [
-    "#ScaryInteresting",
-    "#MountainStories",
-    "#DisturbingIncidents",
-    "#MountainClimbing",
-    "#Hiking",
-    "#SurvivalStories",
-    "#MissingPersons",
-    "#Hypothermia",
-    "#RescueOperation",
-    "#AlpineTragedy",
-  ];
+  const hashtags = useAppSelector(selectSummary).hashtags;
+  
 
   return (
     <div className={styles.main_container}>

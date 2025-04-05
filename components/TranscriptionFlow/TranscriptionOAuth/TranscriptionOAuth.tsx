@@ -1,6 +1,6 @@
 import Image from "next/image"
 
-import { useAppDispatch } from "@/lib/hooks"
+import { useAppDispatch, useAppSelector } from "@/lib/hooks"
 import { transcriberFlowState } from "@/contants/transcriberFlowState"
 import { setCurrentPage } from "@/lib/features/currentDialog/currentDialogSlice"
 
@@ -12,18 +12,23 @@ import GoogleIcon from "@/images/google-icon.svg"
 import ytSoundImage from "@/images/yt-sound-image.png"
 
 import styles from "./TranscriptionOAuth.module.scss"
+import { selectUser } from "@/lib/features/user/userSlice"
 
 const TranscriptionOAuth = () => {
   const dispatch = useAppDispatch();
+  const user = useAppSelector(selectUser);
 
   const getRedir = async () => {
     const response = await axios_instance.get("/oauth/google/redirect-uri")
     console.log(response.data)
-    window.open(response.data.data, "_blank")
+    window.location.href = (response.data.data)
   }
 
   const onAuth = () => {
-    getRedir()
+    if (!user.user) {
+      getRedir()
+      return;
+    }
     dispatch(setCurrentPage(transcriberFlowState.RESULT))
   }
   return (

@@ -1,3 +1,4 @@
+import { axios_instance } from "@/utils/axios_instance"
 import TranscriptionField from "./components/TranscriptionField/TranscriptionField"
 import TranscriptionKeywords from "./components/TranscriptionKeywords/TranscriptionKeywords"
 import TranscriptionPlayer from "./components/TranscriptionPlayer/TranscriptionPlayer"
@@ -5,8 +6,29 @@ import TranscriptionResultNavbar from "./components/TranscriptionResultNavbar/Tr
 import TranscriptionSummary from "./components/TranscriptionSummary/TranscriptionSummary"
 
 import styles from "./TranscriptionResult.module.scss"
+import { useAppSelector } from "@/lib/hooks"
+import { selectYoutubeLink } from "@/lib/features/currentDialog/currentDialogSlice"
+import { useEffect } from "react"
+import { useDispatch } from "react-redux"
+import { setSummary } from "@/lib/features/summary/summarySlice"
 
 const TranscriptionResult = () => {
+  const youtubeUrl = useAppSelector(selectYoutubeLink)
+  const dispatch = useDispatch();
+
+  const getData = async () => {
+    const response = await axios_instance.post("/youtube/summary", { url: youtubeUrl })
+    console.log(response.data)
+    if ([200, 201].includes(response.status)) {
+      dispatch(setSummary(response?.data?.data))
+    }
+    
+  }
+
+  useEffect(() => {
+    getData()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
   return (
     <div className={styles.main_container}>
       <TranscriptionResultNavbar
@@ -17,11 +39,11 @@ const TranscriptionResult = () => {
       <div className={styles.content}>
         <div className={styles.col1}>
           <TranscriptionPlayer />
-          <TranscriptionField />
+          <TranscriptionKeywords />
         </div>
         <div className={styles.col1}>
           <TranscriptionSummary />
-          <TranscriptionKeywords />
+          <TranscriptionField />
         </div>
       </div>
     </div>
