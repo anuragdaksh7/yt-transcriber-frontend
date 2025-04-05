@@ -74,12 +74,19 @@ const TranscriptionSummary = () => {
         <Image src={Sparkle} width={16} alt="AI" />
         <p className={styles.title}>Summary</p>
         <div className={styles.ai}>
+        <Image src={Sparkle} width={16} alt="AI" />
+        <p className={styles.title}>Summary</p>
+        <div className={styles.ai}>
           <p>AI</p>
         </div>
       </div>
       <div>{parseText(data.summary.text, data.summary.keywords)}</div>
+      <div>{parseText(data.summary.text, data.summary.keywords)}</div>
     </div>
   );
 };
+  );
+};
 
+export default TranscriptionSummary;
 export default TranscriptionSummary;

@@ -2,7 +2,9 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 
+
 import StoreProvider from "./StoreProvider";
+
 
 import { ToastContainer } from "react-toastify";
 
