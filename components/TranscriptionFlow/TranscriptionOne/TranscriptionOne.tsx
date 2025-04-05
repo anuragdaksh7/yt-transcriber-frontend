@@ -20,6 +20,7 @@ const TranscriptionOne = ({ youtubeLink, setYoutubeLink }: { youtubeLink: string
   }
 
   const onTranscribeCall = () => {
+    if (!youtubeLink) return;
     dispatch(actionSetYoutubeLink(youtubeLink))
     dispatch(setCurrentPage(transcriberFlowState.OAUTH))
   }
@@ -30,7 +31,7 @@ const TranscriptionOne = ({ youtubeLink, setYoutubeLink }: { youtubeLink: string
         <h1>Transcribe your recording</h1>
         <p>Generate a transcript using our cutting-edge, AI transcription tech.</p>
       </div>
-      <SimpleInput value={youtubeLink} onChange={handleYoutubeLinkChange} type="text" placeholder="youtu.be/xxxx" />
+      <SimpleInput value={youtubeLink} onChange={handleYoutubeLinkChange} type="text" placeholder="Enter your youtube url..." />
       <GradientButton onClick={onTranscribeCall} text="Transcribe" />
     </div>
   )
