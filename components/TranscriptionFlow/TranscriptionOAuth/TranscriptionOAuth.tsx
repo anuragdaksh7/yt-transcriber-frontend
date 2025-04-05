@@ -1,12 +1,17 @@
 import Image from "next/image"
-import ytSoundImage from "@/images/yt-sound-image.png"
-import styles from "./TranscriptionOAuth.module.scss"
-import OutlineButton from "@/ui/Buttons/OutlineButton/OutlineButton"
-import GoogleIcon from "@/images/google-icon.svg"
+
 import { useAppDispatch } from "@/lib/hooks"
-import { setCurrentPage } from "@/lib/features/currentDialog/currentDialogSlice"
 import { transcriberFlowState } from "@/contants/transcriberFlowState"
+import { setCurrentPage } from "@/lib/features/currentDialog/currentDialogSlice"
+
 import { axios_instance } from "@/utils/axios_instance"
+
+import OutlineButton from "@/ui/Buttons/OutlineButton/OutlineButton"
+
+import GoogleIcon from "@/images/google-icon.svg"
+import ytSoundImage from "@/images/yt-sound-image.png"
+
+import styles from "./TranscriptionOAuth.module.scss"
 
 const TranscriptionOAuth = () => {
   const dispatch = useAppDispatch();

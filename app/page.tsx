@@ -1,11 +1,15 @@
 "use client"
-import styles from "./page.module.scss"
+
+import { useState } from "react";
+
 import { useAppSelector } from "@/lib/hooks"
 import { selectCurrentDialogPage } from "@/lib/features/currentDialog/currentDialogSlice";
+
 import TranscriptionOAuth from "@/components/TranscriptionFlow/TranscriptionOAuth/TranscriptionOAuth";
 import TranscriptionOne from "@/components/TranscriptionFlow/TranscriptionOne/TranscriptionOne";
 import TranscriptionResult from "@/components/TranscriptionFlow/TranscriptionResult/TranscriptionResult";
-import { useState } from "react";
+
+import styles from "./page.module.scss"
 
 export default function Home() {
   const currentPage = useAppSelector((state) => selectCurrentDialogPage(state));

@@ -1,0 +1,49 @@
+.highlight {
+    color: #4376ad;
+    background-color: #e6f2ff;
+    border: 0.0625rem solid #b3d9ff;
+    border-radius: 0.3125rem; 
+    padding: 0.0625rem 0.1875rem; 
+    text-decoration: none;
+    cursor: pointer;
+    position: relative;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+  
+  .highlight:hover {
+    background-color: #cce6ff;
+    border-color: #80bfff;
+  }
+  
+  .popup {
+    position: absolute;
+    background-color: #ffffff;
+    border: 0.0625rem solid #cccccc; 
+    border-radius: 0.5rem;
+    padding: 0.9375rem;
+    box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.15); 
+    z-index: 10;
+    width: 18.75rem; 
+    top: 1.875rem;
+    left: -3rem;
+    display: inline-block;
+    font-size: 0.875rem; 
+    color: #333333;
+  }
+  
+  .popup_arrow {
+    position: absolute;
+    top: -0.625rem;
+    left: 4.25rem;
+    width: 0.625rem; 
+    height: 0.625rem; 
+    background-color: #ffffff;
+    border: 0.0625rem solid #cccccc; 
+    transform: rotate(45deg); 
+    z-index: -1; 
+  }
+  
+  .popup p {
+    margin: 0;
+    line-height: 1.5;
+  }

@@ -1,11 +1,14 @@
 "use client"
 
+import { useSearchParams } from 'next/navigation';
+
+import { useEffect } from 'react';
+
 import { setUser } from '@/lib/features/user/userSlice';
 import { useAppDispatch } from '@/lib/hooks';
+
 import { axios_instance } from '@/utils/axios_instance';
 import { errorToast } from '@/utils/toast';
-import { useSearchParams } from 'next/navigation';
-import { useEffect } from 'react';
 
 type Props = {
   provider: string
