@@ -77,7 +77,7 @@ const TranscriptionSummary = () => {
           <p>AI</p>
         </div>
       </div>
-      <div>{parseText(data.summary.text, data.summary.keywords)}</div>
+      <div className={styles.text}>{parseText(data.summary.text, data.summary.keywords)}</div>
     </div>
   );
 };
