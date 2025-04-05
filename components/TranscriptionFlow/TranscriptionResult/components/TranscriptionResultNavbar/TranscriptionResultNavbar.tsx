@@ -7,13 +7,7 @@ import GradientButton from "@/ui/Buttons/GradientButton/GradientButton"
 import { useAppSelector } from "@/lib/hooks"
 import { selectSummary } from "@/lib/features/summary/summarySlice"
 
-type Props = {
-  title: string
-  name: string
-  views: string
-}
-
-const TranscriptionResultNavbar = (props: Props) => {
+const TranscriptionResultNavbar = () => {
   const youtubeUser = useAppSelector(selectSummary).youtubeUser
   return (
     <div className={styles.navbar}>
