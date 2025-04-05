@@ -2,12 +2,7 @@ import Image from "next/image";
 import Sparkle from "@/images/sparkle.svg";
 import Highlight from "./components/Highlight";
 import styles from "./TranscriptionSummary.module.scss";
-
-type Props = {};
-
-type Keywords = {
-  [key: string]: string;
-};
+import { JSX } from "react";
 
 const parseText = (text: string, keywords: { [key: string]: { surrounding_text: string; definition: string } }) => {
   const parts: (string | JSX.Element)[] = [];
@@ -18,7 +13,7 @@ const parseText = (text: string, keywords: { [key: string]: { surrounding_text: 
     let match;
 
     while ((match = regex.exec(text)) !== null) {
-      const [fullMatch] = match;
+      // const [fullMatch] = match;
 
       if (match.index > lastIndex) {
         parts.push(text.slice(lastIndex, match.index));
@@ -26,7 +21,6 @@ const parseText = (text: string, keywords: { [key: string]: { surrounding_text: 
 
       parts.push(
         <Highlight key={`${keyword}-${match.index}`} keyword={keyword} description={definition}>
-          {fullMatch}
         </Highlight>
       );
 
@@ -40,7 +34,7 @@ const parseText = (text: string, keywords: { [key: string]: { surrounding_text: 
 
   return parts;
 };
-const TranscriptionSummary = (props: Props) => {
+const TranscriptionSummary = () => {
   const data = {
     summary: {
       text: "This video shares three disturbing mountain incidents, focusing on two Austrian climbers who died with unknown causes after missing (possibly rockfall or error). It then transitions to a story about Mitsutaka, a man who miraculously survived extreme hypothermia (hibernation like state) after falling and being stranded, requiring a search and rescue. The video concludes with the tragic story of the Krippenstein disaster, where a group of schoolchildren and teachers froze to death due to a teacher's overconfidence and poor weather conditions after multiple warnings ignored.",

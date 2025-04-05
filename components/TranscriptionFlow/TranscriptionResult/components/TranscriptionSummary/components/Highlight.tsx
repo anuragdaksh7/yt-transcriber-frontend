@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "./Highlight.module.scss";
 
-const Highlight = ({ keyword, description}) => {
+const Highlight = ({ keyword, description }: { keyword: string, description: string }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   const handleMouseEnter = () => {
