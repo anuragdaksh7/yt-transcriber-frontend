@@ -4,6 +4,8 @@ import profileCircle from "@/images/profile-circle.svg"
 import eye from "@/images/eye.svg"
 import GhostButton from "@/ui/Buttons/GhostButton/GhostButton"
 import GradientButton from "@/ui/Buttons/GradientButton/GradientButton"
+import { useAppSelector } from "@/lib/hooks"
+import { selectSummary } from "@/lib/features/summary/summarySlice"
 
 type Props = {
   title: string
@@ -12,18 +14,19 @@ type Props = {
 }
 
 const TranscriptionResultNavbar = (props: Props) => {
+  const youtubeUser = useAppSelector(selectSummary).youtubeUser
   return (
     <div className={styles.navbar}>
       <div className={styles.text_container}>
-        <h2 className={styles.title}>{props.title}</h2>
+        <h2 className={styles.title}>{youtubeUser?.name}</h2>
         <div className={styles.info_container}>
           <div className={styles.info}>
             <Image width={14} height={14} src={profileCircle} alt="profile" />
-            <p>{props.name}</p>
+            <p>{youtubeUser?.user?.first_name}</p>
           </div>
           <div className={styles.info}>
             <Image width={14} height={14} src={eye} alt="views" />
-            <p>{props.views} Views</p>
+            <p>{youtubeUser?.views} Views</p>
           </div>
         </div>
       </div>

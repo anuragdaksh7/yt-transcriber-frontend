@@ -56,6 +56,17 @@ export interface SummaryState {
       definition: string;
       surrounding_text: string;
     }[],
+  },
+  youtubeUser: {
+    user: {
+      first_name: string;
+    };
+  } & {
+    name: string;
+    id: string;
+    yt_id: string;
+    user_id: string;
+    views: number;
   }
 }
 
@@ -77,6 +88,16 @@ const initialState: SummaryState = {
   hashtags: [],
   transcription: [],
   results: undefined,
+  youtubeUser: {
+    user: {
+      first_name: ""
+    },
+    name: "",
+    id: "",
+    yt_id: "",
+    user_id: "",
+    views: 0
+  }
 }
 
 export const summarySlice = createSlice({
@@ -90,6 +111,7 @@ export const summarySlice = createSlice({
       state.hashtags = action.payload.hashtags;
       state.transcription = action.payload.transcription;
       state.results = action.payload.results;
+      state.youtubeUser = action.payload.youtubeUser;
     },
   },
 })
