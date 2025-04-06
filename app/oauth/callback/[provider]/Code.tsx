@@ -1,8 +1,7 @@
 "use client"
 
-import { useSearchParams } from 'next/navigation';
-
 import { useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
 
 import { setUser } from '@/lib/features/user/userSlice';
 import { useAppDispatch } from '@/lib/hooks';

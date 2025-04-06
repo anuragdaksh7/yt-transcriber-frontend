@@ -1,10 +1,13 @@
 import Image from "next/image"
+
+import { useAppSelector } from "@/lib/hooks"
+import { selectSummary } from "@/lib/features/summary/summarySlice"
+
 import LanguageIcon from "@/images/language-circle.svg"
 import Export from "@/images/export.svg"
 import Profile2 from "@/images/Group.svg"
+
 import styles from "./TranscriptionField.module.scss"
-import { useAppSelector } from "@/lib/hooks"
-import { selectSummary } from "@/lib/features/summary/summarySlice"
 
 const TranscriptionCell = ({ text, offset }: { text: string, offset: number }) => {
   return (
