@@ -1,11 +1,15 @@
 import Image from "next/image"
-import styles from "./TranscriptionResultNavbar.module.scss"
-import profileCircle from "@/images/profile-circle.svg"
-import eye from "@/images/eye.svg"
-import GhostButton from "@/ui/Buttons/GhostButton/GhostButton"
-import GradientButton from "@/ui/Buttons/GradientButton/GradientButton"
+
 import { useAppSelector } from "@/lib/hooks"
 import { selectSummary } from "@/lib/features/summary/summarySlice"
+
+import GhostButton from "@/ui/Buttons/GhostButton/GhostButton"
+import GradientButton from "@/ui/Buttons/GradientButton/GradientButton"
+
+import profileCircle from "@/images/profile-circle.svg"
+import eye from "@/images/eye.svg"
+
+import styles from "./TranscriptionResultNavbar.module.scss"
 
 const TranscriptionResultNavbar = () => {
   const youtubeUser = useAppSelector(selectSummary).youtubeUser

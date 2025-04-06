@@ -1,4 +1,12 @@
+import { useEffect } from "react"
+import { useDispatch } from "react-redux"
+
+import { useAppSelector } from "@/lib/hooks"
+import { selectYoutubeLink } from "@/lib/features/currentDialog/currentDialogSlice"
+import { setSummary } from "@/lib/features/summary/summarySlice"
+
 import { axios_instance } from "@/utils/axios_instance"
+
 import TranscriptionField from "./components/TranscriptionField/TranscriptionField"
 import TranscriptionKeywords from "./components/TranscriptionKeywords/TranscriptionKeywords"
 import TranscriptionPlayer from "./components/TranscriptionPlayer/TranscriptionPlayer"
@@ -6,11 +14,6 @@ import TranscriptionResultNavbar from "./components/TranscriptionResultNavbar/Tr
 import TranscriptionSummary from "./components/TranscriptionSummary/TranscriptionSummary"
 
 import styles from "./TranscriptionResult.module.scss"
-import { useAppSelector } from "@/lib/hooks"
-import { selectYoutubeLink } from "@/lib/features/currentDialog/currentDialogSlice"
-import { useEffect } from "react"
-import { useDispatch } from "react-redux"
-import { setSummary } from "@/lib/features/summary/summarySlice"
 
 const TranscriptionResult = () => {
   const youtubeUrl = useAppSelector(selectYoutubeLink)
