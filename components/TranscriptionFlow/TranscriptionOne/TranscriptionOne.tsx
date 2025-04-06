@@ -1,4 +1,5 @@
 import Image from "next/image"
+import { ChangeEvent, Dispatch, SetStateAction } from "react"
 
 import { useAppDispatch } from "@/lib/hooks"
 import { setCurrentPage, setYoutubeLink as actionSetYoutubeLink } from "@/lib/features/currentDialog/currentDialogSlice"
@@ -9,8 +10,8 @@ import GradientButton from "@/ui/Buttons/GradientButton/GradientButton"
 import { transcriberFlowState } from "@/contants/transcriberFlowState"
 
 import ytSoundImage from "@/images/yt-sound-image.png"
+
 import styles from "./TranscriptionOne.module.scss"
-import { ChangeEvent, Dispatch, SetStateAction } from "react"
 
 const TranscriptionOne = ({ youtubeLink, setYoutubeLink }: { youtubeLink: string, setYoutubeLink: Dispatch<SetStateAction<string>> }) => {
   const dispatch = useAppDispatch()

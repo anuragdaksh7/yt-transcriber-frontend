@@ -1,8 +1,11 @@
-import Sparkle from "@/images/sparkle.svg";
 import Image from "next/image";
-import styles from "./TranscriptionKeywords.module.scss";
+
 import { useAppSelector } from "@/lib/hooks";
 import { selectSummary } from "@/lib/features/summary/summarySlice";
+
+import Sparkle from "@/images/sparkle.svg";
+
+import styles from "./TranscriptionKeywords.module.scss";
 
 const TranscriptionKeywords = () => {
   const hashtags = useAppSelector(selectSummary).hashtags;

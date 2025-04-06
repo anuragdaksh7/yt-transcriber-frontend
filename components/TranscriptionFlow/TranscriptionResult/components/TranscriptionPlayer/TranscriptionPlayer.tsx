@@ -1,8 +1,11 @@
-import { useAppSelector } from "@/lib/hooks";
-import styles from "./TranscriptionPlayer.module.scss";
 import YouTube, { YouTubeProps } from 'react-youtube';
+
+import { useAppSelector } from "@/lib/hooks";
 import { selectYoutubeLink } from "@/lib/features/currentDialog/currentDialogSlice";
+
 import { extractYouTubeVideoId } from "@/utils/parser/youtubeLinkParser";
+
+import styles from "./TranscriptionPlayer.module.scss";
 
 const TranscriptionPlayer = () => {
   const youtubeLink = useAppSelector(selectYoutubeLink);

@@ -3,6 +3,7 @@ import Image from "next/image"
 import { useAppDispatch, useAppSelector } from "@/lib/hooks"
 import { transcriberFlowState } from "@/contants/transcriberFlowState"
 import { setCurrentPage } from "@/lib/features/currentDialog/currentDialogSlice"
+import { selectUser } from "@/lib/features/user/userSlice"
 
 import { axios_instance } from "@/utils/axios_instance"
 
@@ -12,7 +13,6 @@ import GoogleIcon from "@/images/google-icon.svg"
 import ytSoundImage from "@/images/yt-sound-image.png"
 
 import styles from "./TranscriptionOAuth.module.scss"
-import { selectUser } from "@/lib/features/user/userSlice"
 
 const TranscriptionOAuth = () => {
   const dispatch = useAppDispatch();
