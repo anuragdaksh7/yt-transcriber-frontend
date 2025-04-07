@@ -1,7 +1,6 @@
 import { useEffect } from "react"
-import { useDispatch } from "react-redux"
 
-import { useAppSelector } from "@/lib/hooks"
+import { useAppDispatch, useAppSelector } from "@/lib/hooks"
 import { selectYoutubeLink } from "@/lib/features/currentDialog/currentDialogSlice"
 import { setSummary } from "@/lib/features/summary/summarySlice"
 
@@ -17,7 +16,7 @@ import styles from "./TranscriptionResult.module.scss"
 
 const TranscriptionResult = () => {
   const youtubeUrl = useAppSelector(selectYoutubeLink)
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const getData = async () => {
     const response = await axios_instance.post("/youtube/summary", { url: youtubeUrl })

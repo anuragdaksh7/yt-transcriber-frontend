@@ -60,6 +60,7 @@ export interface SummaryState {
   youtubeUser: {
     user: {
       first_name: string;
+      id: string
     };
   } & {
     name: string;
@@ -90,7 +91,8 @@ const initialState: SummaryState = {
   results: undefined,
   youtubeUser: {
     user: {
-      first_name: ""
+      first_name: "",
+      id: "",
     },
     name: "",
     id: "",

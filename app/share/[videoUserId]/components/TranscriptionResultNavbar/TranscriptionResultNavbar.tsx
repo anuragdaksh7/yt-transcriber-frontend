@@ -11,9 +11,11 @@ import eye from "@/images/eye.svg"
 
 import styles from "./TranscriptionResultNavbar.module.scss"
 import { successToast } from "@/utils/toast"
+import { selectUser } from "@/lib/features/user/userSlice"
 
 const TranscriptionResultNavbar = () => {
   const youtubeUser = useAppSelector(selectSummary).youtubeUser
+  const user = useAppSelector(selectUser).user
 
   return (
     <div className={styles.navbar}>
@@ -31,13 +33,13 @@ const TranscriptionResultNavbar = () => {
         </div>
       </div>
       <div className={styles.action_container}>
-        <GhostButton onClick={() => {
+        {user.id == youtubeUser.user_id && <GhostButton onClick={() => {
           navigator.clipboard.writeText(`${location.host}/share/${youtubeUser?.id}`)
           successToast("Link copied to clipboard")
         }}>
           <p>Share</p>
-        </GhostButton>
-        <GradientButton text="Download" noShadow={true} onClick={() => {}} />
+        </GhostButton>}
+        <GradientButton text="Save" noShadow={true} onClick={() => {}} />
       </div>
     </div>
   )
