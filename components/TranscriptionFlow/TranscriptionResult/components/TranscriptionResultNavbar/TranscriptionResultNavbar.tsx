@@ -1,7 +1,7 @@
 import Image from "next/image"
 
-import { useAppSelector } from "@/lib/hooks"
-import { selectSummary } from "@/lib/features/summary/summarySlice"
+import { useAppDispatch, useAppSelector } from "@/lib/hooks"
+import { selectSummary, selectTranscriptionName, setTranscriptionName } from "@/lib/features/summary/summarySlice"
 
 import GhostButton from "@/ui/Buttons/GhostButton/GhostButton"
 import GradientButton from "@/ui/Buttons/GradientButton/GradientButton"
@@ -13,12 +13,16 @@ import styles from "./TranscriptionResultNavbar.module.scss"
 import { successToast } from "@/utils/toast"
 
 const TranscriptionResultNavbar = () => {
+  const dispatch = useAppDispatch()
   const youtubeUser = useAppSelector(selectSummary).youtubeUser
+  const transcriptionName = useAppSelector(selectTranscriptionName)
 
   return (
     <div className={styles.navbar}>
       <div className={styles.text_container}>
-        <h2 className={styles.title}>{youtubeUser?.name}</h2>
+        <input onChange={(e) => {
+          dispatch(setTranscriptionName(e.target.value))
+        }} onKeyUp={(e)=>{if(e.key==="Enter"){console.log("hello")}}} className={styles.title} value={transcriptionName} placeholder="Enter title" />
         <div className={styles.info_container}>
           <div className={styles.info}>
             <Image width={14} height={14} src={profileCircle} alt="profile" />
