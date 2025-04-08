@@ -10,6 +10,7 @@
   border: 1px solid var(--COLOR-BORDER-PRIMARY, #f0f3fa);
   background: var(--COLOR-MUTLTICOLOR-24E1C8-0, #fff);
   flex: 1 0 0;
+  overflow-y: auto;
 
   .header {
     display: flex;

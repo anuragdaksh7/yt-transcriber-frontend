@@ -68,7 +68,8 @@ export interface SummaryState {
     yt_id: string;
     user_id: string;
     views: number;
-  }
+  },
+  loading: boolean
 }
 
 const initialState: SummaryState = {
@@ -99,7 +100,8 @@ const initialState: SummaryState = {
     yt_id: "",
     user_id: "",
     views: 0
-  }
+  },
+  loading: false
 }
 
 export const summarySlice = createSlice({
@@ -117,13 +119,17 @@ export const summarySlice = createSlice({
     },
     setTranscriptionName: (state, action: PayloadAction<string>) => {
       state.youtubeUser.name = action.payload;
-    }
+    },
+    setSummaryLoading: (state, action: PayloadAction<boolean>) => {
+      state.loading = action.payload;
+    },
   },
 })
 
-export const { setSummary, setTranscriptionName } = summarySlice.actions
+export const { setSummary, setTranscriptionName, setSummaryLoading } = summarySlice.actions
 
 export const selectSummary = (state: RootState) => state.summary_slice
 export const selectTranscriptionName = (state: RootState) => state.summary_slice.youtubeUser.name
+export const selectSummaryLoading = (state: RootState) => state.summary_slice.loading
 
 export default summarySlice.reducer

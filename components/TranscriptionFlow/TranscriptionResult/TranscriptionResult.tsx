@@ -2,7 +2,7 @@ import { useEffect } from "react"
 
 import { useAppDispatch, useAppSelector } from "@/lib/hooks"
 import { selectYoutubeLink } from "@/lib/features/currentDialog/currentDialogSlice"
-import { setSummary } from "@/lib/features/summary/summarySlice"
+import { selectSummaryLoading, setSummary, setSummaryLoading } from "@/lib/features/summary/summarySlice"
 
 import { axios_instance } from "@/utils/axios_instance"
 
@@ -19,7 +19,9 @@ const TranscriptionResult = () => {
   const dispatch = useAppDispatch();
 
   const getData = async () => {
+    dispatch(setSummaryLoading(true));
     const response = await axios_instance.post("/youtube/summary", { url: youtubeUrl })
+    dispatch(setSummaryLoading(false));
     console.log(response.data)
     if ([200, 201].includes(response.status)) {
       dispatch(setSummary(response?.data?.data))

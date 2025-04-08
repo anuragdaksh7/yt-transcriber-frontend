@@ -21,7 +21,7 @@ const Highlight = ({ keyword, description }: { keyword: string, description: str
       {keyword}
       {isHovered && (
         <div className={styles.popup}>
-          <div className={styles.popup_arrow}></div>
+          <h2>{keyword}</h2>
           <p>{description}</p>
         </div>
       )}

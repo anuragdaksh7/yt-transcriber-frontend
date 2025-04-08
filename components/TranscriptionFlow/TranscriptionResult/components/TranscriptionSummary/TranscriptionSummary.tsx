@@ -4,31 +4,43 @@ import Highlight from "./components/Highlight";
 import styles from "./TranscriptionSummary.module.scss";
 import { JSX } from "react";
 import { useAppSelector } from "@/lib/hooks";
-import { selectSummary } from "@/lib/features/summary/summarySlice";
+import {
+  selectSummary,
+  selectSummaryLoading,
+} from "@/lib/features/summary/summarySlice";
+import PlaneLoader from "@/ui/Loaders/PlaneLoader/PlaneLoader";
 
-const parseText = (text: string, keywords: { [key: string]: { surrounding_text: string; definition: string } }) => {
+const parseText = (
+  text: string,
+  keywords: { [key: string]: { surrounding_text: string; definition: string } }
+) => {
   const parts: (string | JSX.Element)[] = [];
   let lastIndex = 0;
 
-  Object.entries(keywords).forEach(([keyword, { surrounding_text, definition }]) => {
-    const regex = new RegExp(surrounding_text, "g");
-    let match;
+  Object.entries(keywords).forEach(
+    ([keyword, { surrounding_text, definition }]) => {
+      const regex = new RegExp(surrounding_text, "g");
+      let match;
 
-    while ((match = regex.exec(text)) !== null) {
-      // const [fullMatch] = match;
+      while ((match = regex.exec(text)) !== null) {
+        // const [fullMatch] = match;
 
-      if (match.index > lastIndex) {
-        parts.push(text.slice(lastIndex, match.index));
+        if (match.index > lastIndex) {
+          parts.push(text.slice(lastIndex, match.index));
+        }
+
+        parts.push(
+          <Highlight
+            key={`${keyword}-${match.index}`}
+            keyword={keyword}
+            description={definition}
+          ></Highlight>
+        );
+
+        lastIndex = regex.lastIndex;
       }
-
-      parts.push(
-        <Highlight key={`${keyword}-${match.index}`} keyword={keyword} description={definition}>
-        </Highlight>
-      );
-
-      lastIndex = regex.lastIndex;
     }
-  });
+  );
 
   if (lastIndex < text.length) {
     parts.push(text.slice(lastIndex));
@@ -37,8 +49,8 @@ const parseText = (text: string, keywords: { [key: string]: { surrounding_text: 
   return parts;
 };
 const TranscriptionSummary = () => {
-  const data = useAppSelector(selectSummary)
- 
+  const summaryLoading = useAppSelector(selectSummaryLoading);
+  const data = useAppSelector(selectSummary);
 
   return (
     <div className={styles.main_container}>
@@ -49,7 +61,13 @@ const TranscriptionSummary = () => {
           <p>AI</p>
         </div>
       </div>
-      <div className={styles.text}>{parseText(data.summary.text, data.summary.keywords)}</div>
+      {summaryLoading ? (
+        <PlaneLoader />
+      ) : (
+        <div className={styles.text}>
+          {parseText(data.summary.text, data.summary.keywords)}
+        </div>
+      )}
     </div>
   );
 };
