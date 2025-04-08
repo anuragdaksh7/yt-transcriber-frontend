@@ -1,13 +1,19 @@
 "use client"
 
 import { useEffect } from 'react';
+import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
 
 import { setUser } from '@/lib/features/user/userSlice';
 import { useAppDispatch } from '@/lib/hooks';
 
-import { axios_instance } from '@/utils/axios_instance';
 import { errorToast } from '@/utils/toast';
+import { axios_instance } from '@/utils/axios_instance';
+import OutlineButton from '@/ui/Buttons/OutlineButton/OutlineButton';
+
+import YoutubeGoogleImg from "@/images/yt-sound-image.png"
+
+import styles from "./Code.module.scss"
 
 type Props = {
   provider: string
@@ -61,7 +67,17 @@ const Code = (props: Props) => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   return (
-    <div>{props.provider} {code}</div>
+    <div className={styles.main_container}>
+      <div className={styles.inner_container}>
+        <Image src={YoutubeGoogleImg} quality={100} priority={true} alt='' width={138} />
+        <h1>
+        🚀 Taking you to your details...
+        </h1>
+        <OutlineButton>
+          <p>Go to home</p>
+        </OutlineButton>
+      </div>
+    </div>
   )
 }
 
