@@ -115,11 +115,15 @@ export const summarySlice = createSlice({
       state.results = action.payload.results;
       state.youtubeUser = action.payload.youtubeUser;
     },
+    setTranscriptionName: (state, action: PayloadAction<string>) => {
+      state.youtubeUser.name = action.payload;
+    }
   },
 })
 
-export const { setSummary } = summarySlice.actions
+export const { setSummary, setTranscriptionName } = summarySlice.actions
 
 export const selectSummary = (state: RootState) => state.summary_slice
+export const selectTranscriptionName = (state: RootState) => state.summary_slice.youtubeUser.name
 
 export default summarySlice.reducer
