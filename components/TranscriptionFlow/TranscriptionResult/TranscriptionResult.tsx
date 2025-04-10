@@ -43,9 +43,9 @@ const TranscriptionResult = () => {
         </div>
         <div className={styles.col1}>
           <TranscriptionSummary />
-          <TranscriptionField />
         </div>
       </div>
+      <TranscriptionField />
     </div>
   )
 }
