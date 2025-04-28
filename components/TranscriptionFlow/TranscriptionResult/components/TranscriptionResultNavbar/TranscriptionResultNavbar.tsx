@@ -10,19 +10,34 @@ import profileCircle from "@/images/profile-circle.svg"
 import eye from "@/images/eye.svg"
 
 import styles from "./TranscriptionResultNavbar.module.scss"
-import { successToast } from "@/utils/toast"
+import { errorToast, successToast } from "@/utils/toast"
+import { axios_instance } from "@/utils/axios_instance"
 
 const TranscriptionResultNavbar = () => {
   const dispatch = useAppDispatch()
   const youtubeUser = useAppSelector(selectSummary).youtubeUser
   const transcriptionName = useAppSelector(selectTranscriptionName)
 
+  const changeName = async (name: string) => {
+    const response = await axios_instance.post("/youtube/update-name", {
+      name: name,
+      id: youtubeUser?.id
+    })
+    if (response.status === 200) {
+      dispatch(setTranscriptionName(response?.data?.data?.name))
+      successToast("Name updated successfully")
+    } else {
+      console.log("Error updating name")
+      errorToast("Error updating name")
+    }
+  }
+
   return (
     <div className={styles.navbar}>
       <div className={styles.text_container}>
         <input onChange={(e) => {
           dispatch(setTranscriptionName(e.target.value))
-        }} onKeyUp={(e)=>{if(e.key==="Enter"){console.log("hello")}}} className={styles.title} value={transcriptionName} placeholder="Enter title" />
+        }} onKeyUp={(e)=>{if(e.key==="Enter"){changeName(transcriptionName)}}} className={styles.title} value={transcriptionName} placeholder="Enter title" />
         <div className={styles.info_container}>
           <div className={styles.info}>
             <Image width={14} height={14} src={profileCircle} alt="profile" />
